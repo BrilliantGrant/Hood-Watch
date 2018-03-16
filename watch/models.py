@@ -1,16 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Profile(models.Model)
+class Profile(models.Model):
     username = models.CharField(max_length =30,null=True) 
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
-    neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
+    # neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
     email = models.EmailField(null=True)
 
-    def save profile(self):
+    def save_profile(self):
         self.save()
 
-    def delete profile(self):
+    def delete_profile(self):
         self.delete()
 
     def __str__(self):

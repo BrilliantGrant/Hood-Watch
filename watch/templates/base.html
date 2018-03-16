@@ -1,0 +1,25 @@
+{% load bootstrap3 %}
+{%load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"> {% if title %}
+    <title>Neighborhood Watch - {{title}}</title>
+    {% else %}
+    <title>Neighborhood Watch </title>
+    {% endif %} {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+     {% endblock %}
+
+</head>
+
+<body>
+{% include 'navbar.html' %}
+{% block content %} 
+{% endblock %} 
+</body>
+
+</html>
