@@ -4,8 +4,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     username = models.CharField(max_length =30,null=True) 
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
-    neighbor_id = models.ForeignKey(Neighbor, on_delete=models.CASCADE, null= True)
-    
+    # neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
     email = models.EmailField(null=True)
 
     def save_profile(self):
@@ -22,29 +21,29 @@ class Profile(models.Model):
         profile = cls.objects.get(user_id = user_id)
         return profile
 
-class Neighbor(models.Model):
-      neighbor_name = models.CharField(max_length=100)
-      neighbor_location = models.CharField(max_length=100)
+class Neighborhood(models.Model):
+      neighborhood_name = models.CharField(max_length=100)
+      neighborhood_location = models.CharField(max_length=100)
       occupy_count = models.PositiveIntegerField()
       admin = models.ForeignKey(User,on_delete=models.CASCADE)
 
       def __str__(self):
-            return self.neighbor_name
+            return self.neighborhood_name
 
-      def create_neigbor(self):
+      def create_neigborhood(self):
             self.save()
 
-      def delete_neigbor(self):
+      def delete_neigborhood(self):
             self.delete()
 
       @classmethod
-      def find_neigbor(cls,neigbor_id):
+      def find_neigborhood(cls,neigbor_id):
             pass
 
       @classmethod
-      def update_neighbor(cls):
-        self.neighbor_name = neighbor_name
-        self.neighbor_location = neighbor_location
+      def update_neighborhood(cls):
+        self.neighborhood_name = neighborhood_name
+        self.neighborhood_location = neighborhood_location
         self.save()
     
 
@@ -53,7 +52,7 @@ class Neighbor(models.Model):
 class Business(models.Model):
       business_name = models.CharField(max_length=100)
       user = models.ForeignKey(User)
-      neighbor_id = models.ForeignKey(Neighbor,on_delete=models.CASCADE)
+      neighborhood_id = models.ForeignKey(Neighborhood,on_delete=models.CASCADE)
       business_email = models.CharField(max_length=100)
 
       def __str__(self):

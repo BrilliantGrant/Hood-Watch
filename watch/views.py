@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http  import HttpResponse
 from django.conf import settings
 from django.conf.urls.static import static
-from .models import Neighbor,Business,Profile
+from .models import Neighborhood,Business,Profile
 
 # Create your views here.
 
