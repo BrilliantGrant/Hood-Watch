@@ -5,6 +5,7 @@ class Profile(models.Model):
     username = models.CharField(max_length =30,null=True) 
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
     neighbor_id = models.ForeignKey(Neighbor, on_delete=models.CASCADE, null= True)
+    
     email = models.EmailField(null=True)
 
     def save_profile(self):
@@ -37,7 +38,7 @@ class Neighbor(models.Model):
             self.delete()
 
       @classmethod
-      def find_neigbor(cls,neigborhood_id):
+      def find_neigbor(cls,neigbor_id):
             pass
 
       @classmethod
@@ -52,7 +53,7 @@ class Neighbor(models.Model):
 class Business(models.Model):
       business_name = models.CharField(max_length=100)
       user = models.ForeignKey(User)
-      neighborhood_id = models.ForeignKey(Neighborhood,on_delete=models.CASCADE)
+      neighbor_id = models.ForeignKey(Neighbor,on_delete=models.CASCADE)
       business_email = models.CharField(max_length=100)
 
       def __str__(self):
