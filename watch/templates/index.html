@@ -1,9 +1,14 @@
 {%extends "base.html" %}
 {% load static%}
 
+
 {% block content %}
 {{ block.super}}
 <div class="container">
-      
+      {% for name in name %}
+            <p>{{name.neighbourhood_name}}</p>
+            <p>{{name.neighbourhood_location}}</p>
+            <p>{{name.occupation_count}}</p>
+      {% endfor %}
 </div>
 {% endblock %}

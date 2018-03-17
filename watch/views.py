@@ -9,7 +9,9 @@ from .models import Neighborhood,Business,Profile
 
 @login_required(login_url='/accounts/login/')
 def index(request):
-    return render(request, 'index.html')
+	title = 'hood'
+	name = Neighborhood.objects.all()
+	return render(request, 'index.html',{"title":title,"name":name})
 
 def search_results(request):
 
@@ -23,3 +25,14 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'all-news/search.html',{"message":message})
+
+def create_profile(request):
+    current_user = request.user 
+    if request.method == 'POST':
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect( landing )
+    else:
+        form = ProfileForm()
+    return render(request,'profile.html',{"form":form,})

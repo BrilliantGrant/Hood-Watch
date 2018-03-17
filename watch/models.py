@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
-    username = models.CharField(max_length =30,null=True) 
+    name = models.CharField(max_length =30,null=True) 
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
     # neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
     email = models.EmailField(null=True)
