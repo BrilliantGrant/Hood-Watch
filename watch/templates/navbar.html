@@ -1,11 +1,24 @@
- <nav class="navbar navbar-inverse">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+   
+   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="{% url 'newsToday' %}">The Moringa Tribune</a>
+        <a class="navbar-brand" href="">Neighborhood watch</a>
       </div>
-
-      <!-- Adding a search form  -->
-      <div class="col-sm-4 col-md-4 navbar-right">
+        
+             <div class="col-sm-4 col-md-4 navbar-right">
 
         <form class="navbar-form" role="search" action="{% url 'search_results' %}">
 
@@ -17,7 +30,7 @@
           </div>
 
         </form>
-        <!--The search form above-->
+   <!--The search form above-->
     <div class="col-sm-6 col-md-6">
             {% if user.is_authenticated %}
             <ul>
@@ -27,10 +40,10 @@
                       </a>
                 <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a href="{%url 'newsToday'%}">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li>
-                     <a href="{%url 'new-article'%}">Create Article</a>
+                     <a href="/">Create Article</a>
                   </li>
                   <li>
                     <a href="/accounts/password/change">Change Password</a>
@@ -53,3 +66,10 @@
       <!-- search form end -->
     </div>
   </nav>
+</body>
+
+</html>
+
+
+
+<!--  -->
