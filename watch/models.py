@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     username = models.CharField(max_length =30,null=True) 
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
-    # neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
+    neighbor_id = models.ForeignKey(Neighbor, on_delete=models.CASCADE, null= True)
     email = models.EmailField(null=True)
 
     def save_profile(self):
@@ -21,29 +21,29 @@ class Profile(models.Model):
         profile = cls.objects.get(user_id = user_id)
         return profile
 
-class Neighborhood(models.Model):
-      neighborhood_name = models.CharField(max_length=100)
-      neighborhood_location = models.CharField(max_length=100)
+class Neighbor(models.Model):
+      neighbor_name = models.CharField(max_length=100)
+      neighbor_location = models.CharField(max_length=100)
       occupy_count = models.PositiveIntegerField()
       admin = models.ForeignKey(User,on_delete=models.CASCADE)
 
       def __str__(self):
-            return self.neighborhood_name
+            return self.neighbor_name
 
-      def create_neigborhood(self):
+      def create_neigbor(self):
             self.save()
 
-      def delete_neigborhood(self):
+      def delete_neigbor(self):
             self.delete()
 
       @classmethod
-      def find_neigborhood(cls,neigborhood_id):
+      def find_neigbor(cls,neigborhood_id):
             pass
 
       @classmethod
-      def update_neighborhood(cls):
-        self.neighborhood_name = neighborhood_name
-        self.neighborhood_location = neighborhood_location
+      def update_neighbor(cls):
+        self.neighbor_name = neighbor_name
+        self.neighbor_location = neighbor_location
         self.save()
     
 
