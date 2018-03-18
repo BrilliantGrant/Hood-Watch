@@ -19,23 +19,16 @@
         </form>
         <!--The search form above-->
     <div class="col-sm-6 col-md-6">
-         
                 {% if user.is_authenticated %}
-                 
-                
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                       <div class="row">
                         <div class="col-md-3">
-                      
                        <button style="margin-left: -120px"> <li class="uk-active"><a href="{%url 'index' %}">Home</a></li></button>
                        </div>
                         <div class="col-md-3">
                         <button style="width: 140px;margin-left: -100px"><li><a href="/accounts/password/change">Change Password</a></li></button>
                          </div>
-                    
-                           
                         <div class="col-md-3">
-                        
                          <button style="width: 90px;margin-left:40px"><li><a href="/accounts/register">Sign up</a></li></button>
                            </div>
                              <div class="col-md-3">
