@@ -4,6 +4,7 @@ from django.http  import HttpResponse
 from django.conf import settings
 from django.conf.urls.static import static
 from .models import Neighborhood,Business,Profile
+from .email import send_welcome_email
 
 # Create your views here.
 

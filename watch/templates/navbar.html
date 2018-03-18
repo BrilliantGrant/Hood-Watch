@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-</head>
-
-<body>
-   
-   <nav class="navbar navbar-inverse">
+ <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="">Neighborhood watch</a>
+        <a class="navbar-brand" href="">Neighbor hood</a>
       </div>
-        
-             <div class="col-sm-4 col-md-4 navbar-right">
 
-        <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+      <!-- Adding a search form  -->
+      <div class="col-sm-4 col-md-4 navbar-right">
+
+        <form class="navbar-form" role="search" action="">
 
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search Article" name="article">
@@ -30,40 +17,46 @@
           </div>
 
         </form>
-   <!--The search form above-->
+        <!--The search form above-->
     <div class="col-sm-6 col-md-6">
-            {% if user.is_authenticated %}
-            <ul>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
-                          <span class="caret"></span>
-                      </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li>
-                    <a href="">Home</a>
-                  </li>
-                  <li>
-                    <a href="/accounts/password/change">Change Password</a>
-                  </li>
-                  <li>
-                    <a href="/logout">Logout</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            {% else %}
-            <li>
-              <a class='btn btn-default' href="/accounts/login">Login</a>
+         
+                {% if user.is_authenticated %}
+                 
+                
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                      <div class="row">
+                        <div class="col-md-3">
+                      
+                       <button style="margin-left: -120px"> <li class="uk-active"><a href="{%url 'index' %}">Home</a></li></button>
+                       </div>
+                        <div class="col-md-3">
+                        <button style="width: 140px;margin-left: -100px"><li><a href="/accounts/password/change">Change Password</a></li></button>
+                         </div>
+                    
+                           
+                        <div class="col-md-3">
+                        
+                         <button style="width: 90px;margin-left:40px"><li><a href="/accounts/register">Sign up</a></li></button>
+                           </div>
+                             <div class="col-md-3">
+                        <button style="width: 90px;margin-left: 100px"><li><a href="/logout">Logout</a></li></button>
+                         </div>
+                       </div>
+                    </ul>
+                  </div>
+                   
+                </div>
             </li>
-
-            {% endif %}
-          </div>
+         {% else %}
+          <div class="row">
+          <div class="col-md-4">
+            <a class='btn btn-default' href="/accounts/login">Login</a>
+        </div>
+      </div>
+        </ul>
+   {% endif %}
     </div>
+  </div>
   </nav>
-</body>
 
-</html>
-
-
-
-<!--  -->
+ 
