@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .models import Neighborhood,Business,Profile
 from .email import send_welcome_email
-from . forms import ProfileForm
+from . forms import ProfileForm,BusinessForm
 from django.db import transaction
 
 
@@ -41,3 +41,29 @@ def create_profile(request):
     else:
         form = ProfileForm()
     return render(request,'profile.html',{"form":form,})
+
+def business(request):
+    user = request.user
+    profile = Profile.find_profile_by_id(user)
+    neighborhood = Neighborhood.objects.all()
+    if request.method == 'POST':
+        form = BusinessForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_business = form.save(commit = False)
+            new_business.user_id =  user
+            new_business.neighborhood_id = neighborhood
+            new_business.save()
+            return redirect( index ) 
+    else:
+        form = BusinessForm()
+    return render(request,'formbusiness.html',{"form":form})
+
+
+
+
+def view_business(request):
+   user = request.user
+   profile = Profile.find_profile_by_id(user)
+   # neighborhood = Neighborhood.find_neighborhood(profile.neighborhood_id.id)
+   # businesses = Business.all_business()
+   return render(request,'business.html',{"user":user,"profile":profile,})

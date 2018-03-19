@@ -2,26 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
-class Profile(models.Model):
-    name = models.CharField(max_length =30,null=True) 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
-    # neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
-    email = models.EmailField(null=True)
-
-    def save_profile(self):
-        self.save()
-
-    def delete_profile(self):
-        self.delete()
-
-    def __str__(self):
-        return self.name
-
-    @classmethod
-    def find_profile_by_id(cls,user_id):
-        profile = cls.objects.get(user_id = user_id)
-        return profile
-
 class Neighborhood(models.Model):
       neighborhood_name = models.CharField(max_length=100)
       neighborhood_location = models.CharField(max_length=100)
@@ -38,8 +18,10 @@ class Neighborhood(models.Model):
             self.delete()
 
       @classmethod
-      def find_neigborhood(cls,neigbor_id):
-            pass
+      def find_neighborhood(cls,neighborhood_id):
+        found_neighborhood = cls.objects.get(id = neighborhood_id)
+        return found_neighborhood
+
 
       @classmethod
       def update_neighborhood(cls):
@@ -47,7 +29,26 @@ class Neighborhood(models.Model):
         self.neighborhood_location = neighborhood_location
         self.save()
     
+class Profile(models.Model):
+    name = models.CharField(max_length =30,null=True) 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
+    neighborhood_id = models.ForeignKey(Neighborhood,null=True, on_delete=models.CASCADE)
+    email = models.EmailField(null=True)
+    
 
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
+    def __str__(self):
+        return self.name
+
+    @classmethod
+    def find_profile_by_id(cls,user_id):
+        profile = cls.objects.get(user_id = user_id)
+        return profile
       
 
 class Business(models.Model):
