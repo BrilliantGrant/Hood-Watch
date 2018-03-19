@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 from .models import Neighborhood,Business,Profile
 from .email import send_welcome_email
 from . forms import ProfileForm
+from django.db import transaction
 
 
 # Create your views here.
@@ -13,7 +14,7 @@ from . forms import ProfileForm
 @login_required(login_url='/accounts/login/')
 def index(request):
 	title = 'hood'
-	name = Neighborhood.objects.all()
+	name = Profile.objects.all()
 	return render(request, 'index.html',{"title":title,"name":name})
 
 def search_results(request):
@@ -29,10 +30,11 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'all-news/search.html',{"message":message})
 
+@transaction.atomic
 def create_profile(request):
     current_user = request.user 
     if request.method == 'POST':
-        form = ProfileForm(request.POST)
+        form = ProfileForm(request.POST,instance=request.user)
         if form.is_valid():
             form.save()
             return redirect( index )

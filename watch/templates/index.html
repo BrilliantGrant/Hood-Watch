@@ -5,10 +5,10 @@
 {% block content %}
 {{ block.super}}
 <div class="container">
-      {% for name in name %}
-            <strong>{{name.neighborhood_name}}</strong>
-            <h5>{{name.neighborhood_location}}</h5>
-            <h6>{{name.occupy_count}}</h6>
-      {% endfor %}
+{% for name in name %}
+<strong>{{name.name}}</strong>
+<h5>{{name.email}}</h5>
+
+{% endfor %}
 </div>
 {% endblock %}

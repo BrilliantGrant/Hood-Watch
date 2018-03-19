@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 class Profile(models.Model):
     name = models.CharField(max_length =30,null=True) 
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null= True)  
     # neighborhood_id = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null= True)
     email = models.EmailField(null=True)
 
@@ -77,4 +78,11 @@ class Business(models.Model):
         self.save() 
             
 
+
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        profile = Profile.objects.create(user=kwargs['instance'])
+
+
+post_save.connect(create_profile, sender=User)
     
