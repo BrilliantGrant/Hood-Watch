@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.http  import HttpResponse
 from django.conf import settings
 from django.conf.urls.static import static
 from .models import Neighborhood,Business,Profile
 from .email import send_welcome_email
+from . forms import ProfileForm
+
 
 # Create your views here.
 
@@ -33,7 +35,7 @@ def create_profile(request):
         form = ProfileForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect( landing )
+            return redirect( index )
     else:
         form = ProfileForm()
     return render(request,'profile.html',{"form":form,})

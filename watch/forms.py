@@ -6,7 +6,7 @@ class ProfileForm(forms.ModelForm):
     
     class Meta:
         model = Profile
-        fields = ['name','neighborhood_id','email']
+        fields = ['name','email']
 
 
 class BusinessForm(forms.ModelForm): 

@@ -1,1 +1,16 @@
-profile.html
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% load bootstrap3 %}
+{% block content %}
+{{block.super}}
+<div class="container">
+<div class="col-md-6">
+<form method="post" action="{% url 'create_profileUrl' %}" enctype="multipart/form-data">
+{% csrf_token %}
+{% bootstrap_form form%}
+<input type="submit" class="btn btn-primary btn-sm" value="Submit">
+<input type="hidden" name="next" value="{{next}}">
+</form>
+</div>
+</div>
+{% endblock %}
