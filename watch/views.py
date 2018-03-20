@@ -56,7 +56,7 @@ def business(request):
             new_business.user_id =  current_user
             new_business.neighborhood = current_neighborhood
             new_business.save()
-            return redirect( landing ) 
+            return redirect( index ) 
     else:
         form = BusinessForm()
     return render(request,'business.html',{"form":form})
@@ -82,8 +82,8 @@ def new_post(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-
             post.save()
+            return redirect( index ) 
     else:
         form = PostForm()
     return render(request, 'new_post.html', {"form": form})

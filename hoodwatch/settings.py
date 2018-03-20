@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'hoodwatch.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hoodwatch',
+        'NAME': 'hood',
         'USER': 'bri',
     'PASSWORD':'12345',
     }
