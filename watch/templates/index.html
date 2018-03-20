@@ -6,9 +6,49 @@
 {{ block.super}}
 <div class="container">
 {% for name in name %}
-<strong>{{name.name}}</strong>
-<h5>{{name.email}}</h5>
+
+	<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container" style="margin-top: 100px">
+
+  <div class="w3-card-4" style="width:50%;">
+    <header class="w3-container w3-blue">
+     <div class="row">
+     	<div class="col-md-1">
+      <a href="{% url 'new_post' %}" id="instTitle" style="color: black; margin-right:20px; font-size:25px;"><span class="glyphicon glyphicon-user"></span></a>
+  </div>
+  <div class="col-md-1">
+  <h5>{{name.user}}</h5></div>
+</div>
+    </header>
+
+    <div class="w3-container">
+     <img src="{{name.image.url}}" style="width: 550px; height: 320px; margin-left: -15px">
+</p>
+    </div>
+
+    <footer class="w3-container w3-blue">
+      <h5>{{name.post}}</h5>
+      <h5>{{name.date}}</h5>
+     <a href=" "><i class="fa fa-comment-o" style="font-size:24px; margin-left: 20px"></i></a>
+
+    </footer>
+  </div>
+</div>
+
+</body>
+</html>
+
 
 {% endfor %}
 </div>
 {% endblock %}
+
+
+
+

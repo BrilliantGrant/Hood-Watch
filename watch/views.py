@@ -16,7 +16,7 @@ from django.db import transaction
 @login_required(login_url='/accounts/login/')
 def index(request):
 	title = 'hood'
-	name = Profile.objects.all()
+	name = Post.objects.all()
 	return render(request, 'index.html',{"title":title,"name":name})
 
 def search_results(request):
@@ -83,7 +83,7 @@ def new_post(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            return redirect( index ) 
+            return redirect('index') 
     else:
         form = PostForm()
     return render(request, 'new_post.html', {"form": form})

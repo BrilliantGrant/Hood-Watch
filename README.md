@@ -91,3 +91,19 @@ Copyright (c) 2018 Brilliant Grant
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+{% for name in name %}
+  <strong>{{name.post}}</strong>
+  <img src="{{name.image.url}}">

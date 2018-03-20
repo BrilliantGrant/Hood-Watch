@@ -83,8 +83,10 @@ class Business(models.Model):
 class Post(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE,default=1)
     post = models.TextField(max_length=100)
+    neighborhood = models.ForeignKey(Neighborhood,null=True)
     image = models.ImageField(upload_to='posts/',null=True,blank=True)
     date = models.DateTimeField(auto_now_add=True,null= True)
+
 
 
     def __str__(self):
