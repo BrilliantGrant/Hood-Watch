@@ -12,16 +12,14 @@
 
 <body>
    
-    <nav class="navbar navbar-default navbar-fixed-top " style="background-color:#EEEEEE; border:#EEEEEE; padding:10px;">
+    <nav class="navbar navbar-default navbar-fixed-top " style="background-color:white#EEEEEE; border:#EEEEEE; padding:10px;">
         <div class="container-fluid">
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                <a href="">
-                    <img style="height:30px; width:30px; margin-right: 30px;" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png">
+                <a href="/">
+                    <img style="height:50px; width:200px; margin-right: 50px;" src="http://w3nw.co.za/wp-content/uploads/2018/02/Banner-Logo.png">
                 </a>
 
-                <a href="">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" width=100px height=35px alt="INSTAGRAM"> </a>
-                </a>
+              
 
 
 
@@ -42,9 +40,9 @@
              </div>
            
   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-      <a href="{% url 'business' %}" id="instTitle" style="color: black; margin-right:20px; font-size:25px;"><span class="glyphicon glyphicon-user"></span></a>
-      <a href="{% url 'business' %}" id="instTitle" style=" color: black;margin-right:20px;font-size:25px;"><span class="glyphicon glyphicon-heart-empty"></span></a>
-      <a href="{% url 'business' %}"> <i class="fa fa-compass" style="font-size:36px;color:black" href="{% url 'business' %}"></i></a> 
+      <a href="{% url 'new_post' %}" id="instTitle" style="color: black; margin-right:20px; font-size:25px;"><span class="glyphicon glyphicon-user"></span></a>
+      <a href="{% url 'leave_hoodUrl' %}" id="instTitle" style=" color: black;margin-right:20px;font-size:25px;"><span class="glyphicon glyphicon-heart-empty"></span></a>
+      <a href="{% url 'post' %}"> <i class="fa fa-compass" style="font-size:36px;color:black" href="{% url 'business' %}"></i></a> 
 
     <div class="col-sm-3 " style="float: right; margin-top: -20px; margin-right: 80px">
             {% if user.is_authenticated %}

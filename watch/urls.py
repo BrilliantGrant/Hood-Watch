@@ -10,6 +10,9 @@ urlpatterns=[
     url(r'^profile/create/',views.create_profile,name = 'create_profileUrl'),
     url(r'^business/view',views.view_business,name = 'viewbusinessUrl'),
     url(r'^business/',views.business,name = 'business'),
+    url(r'^new/post$', views.new_post, name='new_post'),
+    url(r'^post/',views.post,name = 'post'),
+    url(r'^leave/hood',views.leave_hood,name = 'leave_hoodUrl'),
 
 ]
 
