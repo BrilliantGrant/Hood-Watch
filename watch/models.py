@@ -90,7 +90,4 @@ class Post(models.Model):
     def __str__(self):
       return self.post
 
-      @classmethod
-      def get_post(cls):
-        post = Post.objects.all()
-        return post
+     
