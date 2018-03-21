@@ -86,6 +86,7 @@ class Post(models.Model):
     neighborhood = models.ForeignKey(Neighborhood,null=True)
     image = models.ImageField(upload_to='posts/',null=True,blank=True)
     date = models.DateTimeField(auto_now_add=True,null= True)
+    location = models.CharField(max_length=100)
 
 
 
